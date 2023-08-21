@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+  </head>
+  <body>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+    <div id="app">
+      <div>
+        <div v-for="i in x" class="h-100" :key="i">
+          <div class="d-flex flex-row">
+            <div v-for="j in y" :key="j">
+              <div
+                ref="item"
+                :id="i + '-' + j"
+                class="border border-dark bg-light coordinate-box"
+                :class="{ 'prey': isPrey(i + '-' + j), 'snake': isSnake(i + '-' + j) }"
+              >
+                {{ i + '-' + j }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if="gameOver" class="mymodal">Game Over!</div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="./index.js"></script>
+</html>

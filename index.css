@@ -1,0 +1,24 @@
+.coordinate-box {
+    width: 30px;
+    height: 30px;
+    font-size: xx-small;
+  }
+  
+  .prey {
+    background-color: red !important;
+  }
+  
+  .snake {
+    background-color: black !important;
+  }
+  
+  .mymodal {
+    position: fixed;
+    z-index: 2;
+    background-color: white;
+    color: blue;
+    font-size: xx-large;
+    font-weight: 900;
+    left: 0;
+    top: 0;
+  }
