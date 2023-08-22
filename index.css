@@ -1,24 +1,81 @@
 .coordinate-box {
-    width: 30px;
-    height: 30px;
-    font-size: xx-small;
-  }
-  
-  .prey {
-    background-color: red !important;
-  }
-  
-  .snake {
-    background-color: black !important;
-  }
-  
-  .mymodal {
-    position: fixed;
-    z-index: 2;
-    background-color: white;
-    color: blue;
-    font-size: xx-large;
-    font-weight: 900;
-    left: 0;
-    top: 0;
-  }
+  width: 30px;
+  height: 30px;
+  font-size: xx-small;
+}
+
+.prey {
+  background-color: red !important;
+}
+
+.snake {
+  background-color: black !important;
+}
+
+.mymodal {
+  position: fixed;
+  z-index: 2;
+  background-color: white;
+  color: blue;
+  font-size: xx-large;
+  font-weight: 900;
+  left: 0;
+  top: 0;
+}
+
+.controller {
+  width: calc(30px * 10);
+}
+
+.triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 50px solid #555;
+}
+.triangle-up:hover {
+  border-bottom-color: #6e6e6e;
+}
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 50px solid #555;
+}
+.triangle-down:hover {
+  border-top-color: #6e6e6e;
+}
+.triangle-left {
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-right: 50px solid #555;
+	border-bottom: 25px solid transparent;
+}
+.triangle-left:hover {
+  border-right-color: #6e6e6e;
+}
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-left: 50px solid #555;
+	border-bottom: 25px solid transparent;
+}
+.triangle-right:hover {
+  border-left-color: #6e6e6e;
+}
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+  border-radius: 50%;
+}
+.circle:hover {
+  background-color: #6e6e6e;
+}
+.gap-50px {
+  gap: 50px;
+}

@@ -16,6 +16,8 @@ createApp({
       right: false,
       locked: "",
       speed: 1000,
+      tmpSpeed: "1000",
+      snakeSprint: false,
       gameOver: false,
     };
   },
@@ -25,6 +27,8 @@ createApp({
     if (this.gameOver) {
       window.alert("Game Over!");
     }
+    window.addEventListener("keydown", this.boostOn);
+    window.addEventListener("keyup", this.boostOff);
   },
   methods: {
     init() {
@@ -47,6 +51,7 @@ createApp({
         tmpSnake.push(tmpCoordinatesList[i]);
       }
       this.snake = tmpSnake;
+      this.locked = "ArrowRight";
       if (!this.prey) {
         this.generatePrey();
       }
@@ -162,6 +167,23 @@ createApp({
       }
       this.run();
     },
+    boostOn(event) {
+      console.log("boostOn",event);
+      if (event.code === "Space") {
+        if (!this.snakeSprint) {
+          this.tmpSpeed = this.speed.toString();
+        }
+        this.snakeSprint = true;
+        this.speed = 100;
+      }
+    },
+    boostOff(event) {
+      console.log("boostOff",event);
+      if (event.code === "Space") {
+        this.snakeSprint = false;
+        this.speed = Number(this.tmpSpeed);
+      }
+    },
     onArrow(event) {
       const { key } = event;
       if (key === "ArrowUp" && this.locked !== "ArrowUp") {
@@ -189,5 +211,7 @@ createApp({
   },
   beforeUnmount() {
     window.removeEventListener("keyup", this.onArrow);
+    window.removeEventListener("keyup", this.boostOff);
+    window.removeEventListener("keydown", this.boostOn);
   },
 }).mount("#app");

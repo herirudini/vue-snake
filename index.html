@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" type="text/css" href="./index.css" />
   </head>
   <body>
@@ -16,22 +21,56 @@
       }
     </script>
     <div id="app">
-      <div>
-        <div v-for="i in x" class="h-100" :key="i">
-          <div class="d-flex flex-row">
-            <div v-for="j in y" :key="j">
-              <div
-                ref="item"
-                :id="i + '-' + j"
-                class="border border-dark bg-light coordinate-box"
-                :class="{ 'prey': isPrey(i + '-' + j), 'snake': isSnake(i + '-' + j) }"
-              >
-                {{ i + '-' + j }}
+      <div class="screen">
+        <div class="container p-0">
+          <div>
+            <div v-for="i in x" class="h-100" :key="i">
+              <div class="d-flex flex-row">
+                <div v-for="j in y" :key="j">
+                  <div
+                    ref="item"
+                    :id="i + '-' + j"
+                    class="border border-grey bg-light coordinate-box"
+                    :class="{ 'prey': isPrey(i + '-' + j), 'snake': isSnake(i + '-' + j) }"
+                  >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-if="gameOver" class="mymodal">Game Over!</div>
+          </div>
+          <div class="controller">
+            <div class="d-flex flex-row justify-content-between align-items-center p-5">
+              <div class="d-flex flex-column align-items-center justify-content-center">
+                <div
+                  class="triangle-up"
+                  @touchstart="$event.preventDefault();onArrow({key:'ArrowUp'})"
+                  @click="onArrow({key:'ArrowUp'})"
+                ></div>
+                <div class="row gap-50px">
+                  <div
+                    class="triangle-left"
+                    @touchstart="$event.preventDefault();onArrow({key:'ArrowLeft'})"
+                    @click="onArrow({key:'ArrowLeft'})"
+                  ></div>
+                  <div
+                    class="triangle-right"
+                    @touchstart="$event.preventDefault();onArrow({key:'ArrowRight'})"
+                    @click="onArrow({key:'ArrowRight'})"
+                  ></div>
+                </div>
+                <div
+                  class="triangle-down"
+                  @touchstart="$event.preventDefault();onArrow({key:'ArrowDown'})"
+                  @click="onArrow({key:'ArrowDown'})"
+                ></div>
+              </div>
+              <div class="d-flex flex-column align-items-center justify-content-center">
+                <div class="circle" @touchstart="$event.preventDefault();boostOn({code:'Space'})" @touchend="$event.preventDefault();boostOff({code:'Space'})" @mousedown="boostOn({code:'Space'})" @mouseup="boostOff({code:'Space'})"></div>
               </div>
             </div>
           </div>
         </div>
-        <div v-if="gameOver" class="mymodal">Game Over!</div>
       </div>
     </div>
   </body>
